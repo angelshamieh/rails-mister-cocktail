@@ -1,19 +1,38 @@
 <h2> <%= @cocktail.name  %> </h2>
+
+
 <ul>
-<% @cocktail.doses.each do |dose|%>
-<li> <%= dose.description %> <%= dose.ingredient.name %> <%= link_to "Delete", dose_path(dose),
-method: :delete, data: { confirm: "Are you sure?" } %></li>
-<%end %>
+  <H2>Description:</H2>
+  <% @cocktail.doses.each do |dose|%>
+   <li> <%= dose.description %> <%= dose.ingredient.name %> <%= link_to "Delete", dose_path(dose),
+   method: :delete, data: { confirm: "Are you sure?" } %></li>
+  <%end %>
 </ul>
+
  <div>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.input :description%>
   <%= f.input :ingredient, collection: Ingredient.all, input_html: { class: 'select2' }, include_hidden: false %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
 
-<div>
+<div><
+  <h2> Reviews:</h2>
+    <% @cocktail.reviews.each do |review| %>
+      <div class="d-flex">
+        <%= review.content %>
+        <ul class="list-inline ml-3">
+          <% review.rating.times do %>
+          <li class="list-inline-item"><i class="far fa-smile-beam"></i></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+
+
 <%= link_to "Go back to home page", cocktails_path %>
-</div>
+<%= link_to "Add new review", new_cocktail_review_path(@cocktail) %>
 
