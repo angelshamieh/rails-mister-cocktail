@@ -2,9 +2,13 @@
   position: relative;
   padding: 8px 8px 8px 8px;
   margin: 8px;
-  background-color: #FFF7F8;
+  // background-color: #FFF7F8;
   display: flex;
   border-radius: 5px;
+  object-fit:cover;
+  background-position: center;
+  background-size: cover;
+  height: 250px;
   img {
     width: 50%;
     height: 204px;

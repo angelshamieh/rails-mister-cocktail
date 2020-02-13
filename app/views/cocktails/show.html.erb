@@ -6,7 +6,7 @@
   <h4 class="text-center">Ingredient:</h4>
   <ul>
     <% @cocktail.doses.each do |dose|%>
-    <li> <%= dose.description %> <%= dose.ingredient.name %> <%= link_to "<i class="fal fa-trash-alt"></i>", dose_path(dose),
+    <li> <%= dose.description %> <%= dose.ingredient.name %> <%= link_to "delete", dose_path(dose),
     method: :delete, data: { confirm: "Are you sure?" } %></li>
     <%end %>
   </ul>
