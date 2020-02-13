@@ -1,7 +1,7 @@
 
 <div class="container">
 
-<h2 class="title"> <%= @cocktail.name  %> </h2>
+<h2 class="title"> <%= @cocktail.name %> </h2>
 <div>
   <h4 class="text-center">Ingredient:</h4>
   <ul>
@@ -11,6 +11,7 @@
     <%end %>
   </ul>
 </div>
+
 
  <div>
   <%= simple_form_for [@cocktail, @dose] do |f| %>
