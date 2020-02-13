@@ -9,6 +9,7 @@
     <% @cocktails.each do |cocktail|%>
       <div class="col-4">
         <div class="cocktail-card">
+          <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
           <img src="https://images.unsplash.com/photo-1481671703460-040cb8a2d909?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="">
           <div class="cocktail-card-details">
             <h3> <%= cocktail.name %> </h3>
