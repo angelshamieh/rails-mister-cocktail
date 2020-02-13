@@ -1,6 +1,11 @@
-<h2> Add a new review <%= @cocktail.name %></h2>
+<div class="container mt-5">
+<p class="center"> Add a new review for <%= @cocktail.name.capitalize %> cocktail</p>
 <%= simple_form_for [@cocktail, @review] do |f| %>
   <%= f.input :content %>
   <%= f.input :rating %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= f.submit "Submit", class: "btn btn-primary color" %>
 <% end %>
+<div class="text-center mt-4">
+    </div>
+
+</div>

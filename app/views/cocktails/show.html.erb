@@ -1,38 +1,43 @@
-<h2> <%= @cocktail.name  %> </h2>
 
+<div class="container">
 
-<ul>
-  <H2>Description:</H2>
-  <% @cocktail.doses.each do |dose|%>
-   <li> <%= dose.description %> <%= dose.ingredient.name %> <%= link_to "Delete", dose_path(dose),
-   method: :delete, data: { confirm: "Are you sure?" } %></li>
-  <%end %>
-</ul>
+<h2 class="title"> <%= @cocktail.name  %> </h2>
+<div>
+  <h4 class="text-center">Ingredient:</h4>
+  <ul>
+    <% @cocktail.doses.each do |dose|%>
+    <li> <%= dose.description %> <%= dose.ingredient.name %> <%= link_to <i class="fal fa-trash-alt"></i>, dose_path(dose),
+    method: :delete, data: { confirm: "Are you sure?" } %></li>
+    <%end %>
+  </ul>
+</div>
 
  <div>
   <%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :ingredient_id, collection: Ingredient.all, input_html: { class: 'select2' }, include_hidden: false %>
   <%= f.input :description%>
-  <%= f.input :ingredient, collection: Ingredient.all, input_html: { class: 'select2' }, include_hidden: false %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
 
-<div><
-  <h2> Reviews:</h2>
+<div class="container mt-4">
+  <h4 class="color"> Reviews:</h4>
     <% @cocktail.reviews.each do |review| %>
-      <div class="d-flex">
+      <div >
         <%= review.content %>
-        <ul class="list-inline ml-3">
+        <ul >
           <% review.rating.times do %>
           <li class="list-inline-item"><i class="far fa-smile-beam"></i></li>
           <% end %>
         </ul>
       </div>
     <% end %>
+
+    <div class="text-center ">
+    <div>
+     <%= link_to "Add new review", new_cocktail_review_path(@cocktail), class: "btn btn-primary" %>
+
+    </div>
+    </div>
   </div>
-
-
-
-<%= link_to "Go back to home page", cocktails_path %>
-<%= link_to "Add new review", new_cocktail_review_path(@cocktail) %>
 
